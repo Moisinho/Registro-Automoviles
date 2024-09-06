@@ -11,42 +11,48 @@ if (!isset($autos)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscar Automóviles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h2>Buscar Automóviles</h2>
-    <form action="../backend/procesar_busqueda.php" method="post">
-        <label for="buscar">Buscar:</label>
-        <input type="text" id="buscar" name="input" placeholder="Marca, modelo, año, color, etc.">
-        <input type="submit" value="Buscar">
+<body class="flex h-[100vh] font-serif justify-center items-center bg-[#6A62D2] mx-16">
+<div class="flex flex-col bg-white p-4 w-full h-[85vh] rounded-md text-center">
+    <h2 class="text-2xl font-bold mb-4">Buscar Automóviles</h2>
+    <form class="flex justify-center mb-6" action="../backend/procesar_busqueda.php" method="post">
+        <div class="flex items-center bg-[#E5E8ED] w-1/3">
+            <img class="pl-1 w-7 h-7" src="/img/Search_alt.png" alt="Lupita">
+            <input class="py-1 pl-2 pr-2 bg-[#E5E8ED] outline-none w-full" type="text" id="buscar" name="input" placeholder="Ingrese un dato">
+        </div>
+        <input class="bg-[#6A62D2] text-white rounded-lg ml-4 py-2 px-4 hover:cursor-pointer hover:bg-[#5852A7]" type="submit" value="Buscar">
     </form>
-
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Año</th>
-                <th>Color</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (!empty($autos)): ?>
-                <?php foreach ($autos as $auto): ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($auto['id']); ?></td>
-                        <td><?php echo htmlspecialchars($auto['marca']); ?></td>
-                        <td><?php echo htmlspecialchars($auto['modelo']); ?></td>
-                        <td><?php echo htmlspecialchars($auto['anio']); ?></td>
-                        <td><?php echo htmlspecialchars($auto['color']); ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            <?php else: ?>
+    <div class="overflow-y-auto">
+        <table class="w-full">
+            <thead class="bg-[#6A62D2] text-white">
                 <tr>
-                    <td colspan="5">No se encontraron resultados</td>
+                    <th class="rounded-tl-lg">ID</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Año</th>
+                    <th class="rounded-tr-lg">Color</th>
                 </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody class="">
+                <?php if (!empty($autos)): ?>
+                    <?php foreach ($autos as $auto): ?>
+                        <tr>
+                            <td class="border border-[#6A62D2]"><?php echo htmlspecialchars($auto['id']); ?></td>
+                            <td class="border border-r border-[#6A62D2]"><?php echo htmlspecialchars($auto['marca']); ?></td>
+                            <td class="border border-r border-[#6A62D2]"><?php echo htmlspecialchars($auto['modelo']); ?></td>
+                            <td class="border border-r border-[#6A62D2]"><?php echo htmlspecialchars($auto['anio']); ?></td>
+                            <td class="border border-r border-[#6A62D2]"><?php echo htmlspecialchars($auto['color']); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="5">No se encontraron resultados</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>

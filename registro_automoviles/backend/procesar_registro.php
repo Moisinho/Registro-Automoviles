@@ -1,7 +1,7 @@
 <?php
 // Incluir archivos de conexión y clase Automovil
-include 'includes/Database.php';
-include 'includes/Automovil.php';
+include '../includes/Database.php';
+include '../includes/Automovil.php';
 
 // Crear una instancia de la clase Database y obtener la conexión
 $database = new Database();
@@ -15,6 +15,7 @@ $automovil->marca = $_POST['marca'];
 $automovil->modelo = $_POST['modelo'];
 $automovil->anio = $_POST['anio'];
 $automovil->color = $_POST['color'];
+$automovil->placa = $_POST['placa'];
 
 // Registrar el automóvil
 if ($automovil->registrar()) {

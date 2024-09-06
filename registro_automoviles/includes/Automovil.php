@@ -9,6 +9,7 @@ class Automovil {
     public $modelo;
     public $anio;
     public $color;
+    public $placa;
 
     // Constructor que recibe la conexión a la base de datos
     public function __construct($db) {
@@ -18,7 +19,7 @@ class Automovil {
     // Método para registrar un nuevo automóvil
     public function registrar() {
         // Query para insertar un nuevo automóvil
-        $query = "INSERT INTO " . $this->table_name . " (marca, modelo, anio, color) VALUES (:marca, :modelo, :anio, :color)";
+        $query = "INSERT INTO " . $this->table_name . " (marca, modelo, anio, color, placa) VALUES (:marca, :modelo, :anio, :color, :placa)";
 
         // Preparar la declaración
         $stmt = $this->conn->prepare($query);
@@ -28,12 +29,14 @@ class Automovil {
         $this->modelo = htmlspecialchars(strip_tags($this->modelo));
         $this->anio = htmlspecialchars(strip_tags($this->anio));
         $this->color = htmlspecialchars(strip_tags($this->color));
+        $this->placa = htmlspecialchars(strip_tags($this->placa));
 
         // Enlazar los parámetros
         $stmt->bindParam(":marca", $this->marca);
         $stmt->bindParam(":modelo", $this->modelo);
         $stmt->bindParam(":anio", $this->anio);
         $stmt->bindParam(":color", $this->color);
+        $stmt->bindParam(":placa", $this->placa);
 
         // Ejecutar la declaración
         if ($stmt->execute()) {
