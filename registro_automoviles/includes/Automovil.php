@@ -58,6 +58,60 @@ class Automovil {
             return [];
         }
     }
+
+    public function eliminar_automoviles($id) {
+        $query = "DELETE FROM automoviles WHERE id = :id";
+    
+        $stmt = $this->conn->prepare($query);
+    
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+    
+        // Ejecutar la declaración
+        if ($stmt->execute()) {
+            return true; 
+        } else {
+            return false; }
+    }
+
+    public function validar_automovil($id) {
+        $query = "SELECT * FROM automoviles WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    
+        if ($stmt->execute()) {
+            return $stmt->fetch(PDO::FETCH_ASSOC);  // Devolver los datos del automóvil
+        } else {
+            return false;
+        }
+    }
+
+    public function actualizar_automovil() {
+        $query = "UPDATE automoviles 
+                  SET marca = :marca, 
+                      modelo = :modelo, 
+                      anio = :anio, 
+                      color = :color, 
+                      placa = :placa 
+                  WHERE id = :id";
+        
+        $stmt = $this->conn->prepare($query);
+
+        $this->marca = htmlspecialchars(strip_tags($this->marca));
+        $this->modelo = htmlspecialchars(strip_tags($this->modelo));
+        $this->anio = htmlspecialchars(strip_tags($this->anio));
+        $this->color = htmlspecialchars(strip_tags($this->color));
+        $this->placa = htmlspecialchars(strip_tags($this->placa));
+        
+        $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
+        $stmt->bindParam(':marca', $this->marca, PDO::PARAM_STR);
+        $stmt->bindParam(':modelo', $this->modelo, PDO::PARAM_STR);
+        $stmt->bindParam(':anio', $this->anio, PDO::PARAM_INT);
+        $stmt->bindParam(':color', $this->color, PDO::PARAM_STR);
+        $stmt->bindParam(':placa', $this->placa, PDO::PARAM_STR);
+        
+        return $stmt->execute();
+    }
+    
     
 }
 ?>

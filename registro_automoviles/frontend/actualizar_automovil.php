@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Automóviles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex h-[100vh] font-serif justify-center items-center bg-[#6A62D2]">
+    <div class="flex flex-col bg-white p-4 w-[75vh] h-[65vh] rounded-md text-center justify-center">
+        <h2 class="text-2xl font-bold mb-12">Actualizar Automóvil</h2>
+        <form action="../backend/procesar_actualizacion.php" method="post">
+            <div class="mx-16">
+                <label class="mb-2 block text-left text-md font-bold" for="id">Escriba el ID del Automóvil que desea actualizar:</label>
+                <input class="bg-[#E5E8ED] p-2 w-full h-auto mb-16" placeholder="Ingrese un ID" type="number" id="id" name="id" required><br>
+            </div>
+            <div class="mx-32">
+                <input class="bg-[#6A62D2] text-white p-2 w-full hover:cursor-pointer hover:bg-[#5852A7]" name="buscar_id" type="submit" value="Buscar">
+            </div>  
+        </form>
+    </div>
+</body>
+</html>
