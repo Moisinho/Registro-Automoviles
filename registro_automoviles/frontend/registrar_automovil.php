@@ -52,6 +52,14 @@
                 <input class="bg-[#E5E8ED] p-2 w-full mb-2" placeholder="Ingrese un color" type="text" id="color" name="color" required><br>
             </div>
             <div class="mx-16">
+                <label class="mb-2 block text-left text-md font-bold" for="motor">Número de Motor:</label>
+                <input class="bg-[#E5E8ED] p-2 w-full mb-4" placeholder="Ingrese un motor" type="text" id="motor" name="motor" required><br>
+            </div>
+            <div class="mx-16">
+                <label class="mb-2 block text-left text-md font-bold" for="chasis">Número de Chasis:</label>
+                <input class="bg-[#E5E8ED] p-2 w-full mb-4" placeholder="Ingrese un chasis" type="text" id="chasis" name="chasis" required><br>
+            </div>
+            <div class="mx-16">
                 <label class="mb-2 block text-left text-md font-bold" for="tipo_vehiculo">Tipo de Vehiculo:</label>
                 <select class="bg-[#E5E8ED] p-2 w-full mb-6" name="tipo_vehiculo" id="tipo_vehiculo">
                     <option value="" disabled selected>Seleccione un tipo de vehiculo</option>

@@ -31,7 +31,10 @@ if (!isset($autos)) {
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Año</th>
-                    <th class="rounded-tr-lg">Color</th>
+                    <th>Color</th>
+                    <th>Número de Motor</th>
+                    <th>Número de Chasis</th>
+                    <th class="rounded-tr-lg">Tipo de Vehiculo</th>
                 </tr>
             </thead>
             <tbody class="">
@@ -43,7 +46,9 @@ if (!isset($autos)) {
                             <td class="border border-r border-[#6A62D2]"><?php echo htmlspecialchars($auto['modelo']); ?></td>
                             <td class="border border-r border-[#6A62D2]"><?php echo htmlspecialchars($auto['anio']); ?></td>
                             <td class="border border-r border-[#6A62D2]"><?php echo htmlspecialchars($auto['color']); ?></td>
-                        </tr>
+                            <td class="border border-r border-[#6A62D2]"><?php echo htmlspecialchars($auto['numero_motor']); ?></td>
+                            <td class="border border-r border-[#6A62D2]"><?php echo htmlspecialchars($auto['numero_chasis']); ?></td>
+                            <td class="border border-r border-[#6A62D2]"><?php echo htmlspecialchars($auto['tipo_vehiculo']); ?></td>                        </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
                     <tr>

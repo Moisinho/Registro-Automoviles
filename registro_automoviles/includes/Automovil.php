@@ -9,6 +9,8 @@ class Automovil {
     public $modelo;
     public $anio;
     public $color;
+    public $motor;
+    public $chasis;
     public $tipo_vehiculo;
 
     // Constructor que recibe la conexión a la base de datos
@@ -19,7 +21,7 @@ class Automovil {
     // Método para registrar un nuevo automóvil
     public function registrar() {
         // Query para insertar un nuevo automóvil
-        $query = "INSERT INTO " . $this->table_name . " (placa, marca, modelo, anio, color, tipo_vehiculo) VALUES (:placa, :marca, :modelo, :anio, :color, :tipo_vehiculo)";
+        $query = "INSERT INTO " . $this->table_name . " (placa, marca, modelo, anio, color, numero_motor, numero_chasis, tipo_vehiculo) VALUES (:placa, :marca, :modelo, :anio, :color, :motor, :chasis, :tipo_vehiculo)";
 
         // Preparar la declaración
         $stmt = $this->conn->prepare($query);
@@ -30,6 +32,8 @@ class Automovil {
         $this->modelo = htmlspecialchars(strip_tags($this->modelo));
         $this->anio = htmlspecialchars(strip_tags($this->anio));
         $this->color = htmlspecialchars(strip_tags($this->color));
+        $this->motor = htmlspecialchars(strip_tags($this->motor));
+        $this->chasis = htmlspecialchars(strip_tags($this->chasis));
         $this->tipo_vehiculo = htmlspecialchars(strip_tags($this->tipo_vehiculo));
 
         // Enlazar los parámetros
@@ -38,6 +42,8 @@ class Automovil {
         $stmt->bindParam(":modelo", $this->modelo);
         $stmt->bindParam(":anio", $this->anio);
         $stmt->bindParam(":color", $this->color);
+        $stmt->bindParam(":motor", $this->motor);
+        $stmt->bindParam(":chasis", $this->chasis);
         $stmt->bindParam(":tipo_vehiculo", $this->tipo_vehiculo);
 
         // Ejecutar la declaración
@@ -92,7 +98,9 @@ class Automovil {
                   SET marca = :marca, 
                       modelo = :modelo, 
                       anio = :anio, 
-                      color = :color, 
+                      color = :color,
+                      numero_motor = :motor,
+                      numero_chasis = :chasis, 
                       tipo_vehiculo = :tipo_vehiculo
                   WHERE placa = :placa";
         
@@ -103,6 +111,8 @@ class Automovil {
         $this->modelo = htmlspecialchars(strip_tags($this->modelo));
         $this->anio = htmlspecialchars(strip_tags($this->anio));
         $this->color = htmlspecialchars(strip_tags($this->color));
+        $this->motor = htmlspecialchars(strip_tags($this->motor));
+        $this->chasis = htmlspecialchars(strip_tags($this->chasis));
         $this->tipo_vehiculo = htmlspecialchars(strip_tags($this->tipo_vehiculo));
 
         
@@ -111,6 +121,8 @@ class Automovil {
         $stmt->bindParam(':modelo', $this->modelo, PDO::PARAM_STR);
         $stmt->bindParam(':anio', $this->anio, PDO::PARAM_INT);
         $stmt->bindParam(':color', $this->color, PDO::PARAM_STR);
+        $stmt->bindParam(':motor', $this->motor, PDO::PARAM_STR);
+        $stmt->bindParam(':chasis', $this->chasis, PDO::PARAM_STR);
         $stmt->bindParam(':tipo_vehiculo', $this->tipo_vehiculo, PDO::PARAM_STR);
 
         

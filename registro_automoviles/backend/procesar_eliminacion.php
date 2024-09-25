@@ -11,7 +11,7 @@ $db = $database->getConnection();
 $automovil = new Automovil($db);
 
 // Obtener los datos del formulario
-$automovil->id = $_POST['id'];
+$automovil->placa = $_POST['placa'];
 
 $resultado = $automovil->validar_automovil($automovil->id);
 

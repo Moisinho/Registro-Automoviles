@@ -34,7 +34,7 @@ $count = $stmt->fetchColumn();
 if ($count > 0) {
     // Si el propietario ya existe, proceder directamente a registrar el automóvil
     if ($propietario_automoviles->registrar()) {
-        echo "Registro completado exitosamente";
+        header("Location: ../frontend/mensaje.php");;
     } else {
         echo "Error al registrar el registro del automóvil.";
     }
@@ -42,7 +42,7 @@ if ($count > 0) {
     // Si el propietario no existe, proceder a registrarlo
     if ($propietario->registrar()) {
         if ($propietario_automoviles->registrar()) {
-            echo "Registro completado exitosamente";
+            header("Location: ../frontend/mensaje.php");;
         } else {
             echo "Error al registrar el registro del automóvil.";
         }

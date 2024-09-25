@@ -19,7 +19,7 @@ class Propietario {
     // Método para registrar un nuevo automóvil
     public function registrar() {
         // Query para insertar un nuevo automóvil
-        $query = "INSERT INTO " . $this->table_name . " (cedula, nombre, apellido, telefono, entidad, placa) VALUES (:cedula, :nombre, :apellido, :telefono, :entidad, :placa)";
+        $query = "INSERT INTO " . $this->table_name . " (cedula, nombre, apellido, telefono, entidad) VALUES (:cedula, :nombre, :apellido, :telefono, :entidad)";
 
         // Preparar la declaración
         $stmt = $this->conn->prepare($query);
@@ -30,7 +30,6 @@ class Propietario {
         $this->apellido = htmlspecialchars(strip_tags($this->apellido));
         $this->telefono = htmlspecialchars(strip_tags($this->telefono));
         $this->entidad = htmlspecialchars(strip_tags($this->entidad));
-        $this->placa = htmlspecialchars(strip_tags($this->placa));
 
         // Enlazar los parámetros
         $stmt->bindParam(":cedula", $this->cedula);
@@ -38,7 +37,6 @@ class Propietario {
         $stmt->bindParam(":apellido", $this->apellido);
         $stmt->bindParam(":telefono", $this->telefono);
         $stmt->bindParam(":entidad", $this->entidad);
-        $stmt->bindParam(":placa", $this->placa);
 
         // Ejecutar la declaración
         if ($stmt->execute()) {

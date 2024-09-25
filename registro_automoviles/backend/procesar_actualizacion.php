@@ -12,12 +12,12 @@ $automovil = new Automovil($db);
 
 // Procesar la solicitud dependiendo de qué formulario se envía
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['buscar_id'])) {
+    if (isset($_POST['buscar_placa'])) {
         // Buscar automóvil
-        $id = isset($_POST['id']) ? filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT) : null;
+        $placa = isset($_POST['placa']) ? filter_var($_POST['placa'], FILTER_SANITIZE_NUMBER_INT) : null;
 
-        if ($id && is_numeric($id)) {
-            $resultado = $automovil->validar_automovil($id);
+        if ($placa && is_numeric($placa)) {
+            $resultado = $automovil->validar_automovil($placa);
 
             if ($resultado) {
                 
@@ -31,12 +31,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } elseif (isset($_POST['actualizar'])) {
         // Actualizar automóvil
-        $automovil->id = $_POST['id'];
+        $automovil->placa = $_POST['placa'];
         $automovil->modelo = $_POST['modelo'];
         $automovil->marca = $_POST['marca'];
         $automovil->anio = $_POST['anio'];
         $automovil->color = $_POST['color'];
-        $automovil->placa = $_POST['placa'];
+        $automovil->motor = $_POST['motor'];
+        $automovil->chasis = $_POST['chasis'];
+        $automovil->tipo_vehiculo = $_POST['tipo_vehiculo'];
+
 
         if ($automovil->actualizar_automovil()) {
             echo "Automóvil actualizado exitosamente.";
@@ -49,11 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "
     <form action='procesar_actualizacion.php' method='post'>
         <div class='mx-16'>
-            <label class='mb-2 block text-left text-md font-bold' for='id'>Escriba el ID del Automóvil que desea actualizar:</label>
-            <input class='bg-[#E5E8ED] p-2 w-full h-auto mb-16' placeholder='Ingrese un ID' type='number' id='id' name='id' required><br>
+            <label class='mb-2 block text-left text-md font-bold' for='placa'>Escriba la placa del Automóvil que desea actualizar:</label>
+            <input class='bg-[#E5E8ED] p-2 w-full h-auto mb-16' placeholder='Ingrese una placa' type='number' id='placa' name='placa' required><br>
         </div>
         <div class='mx-32'>
-            <input class='bg-[#6A62D2] text-white p-2 w-full hover:cursor-pointer hover:bg-[#5852A7]' type='submit' name='buscar_id' value='Buscar'>
+            <input class='bg-[#6A62D2] text-white p-2 w-full hover:cursor-pointer hover:bg-[#5852A7]' type='submit' name='buscar_placa' value='Buscar'>
         </div>  
     </form>
     ";

@@ -16,6 +16,8 @@ $automovil->marca = $_POST['marca'];
 $automovil->modelo = $_POST['modelo'];
 $automovil->anio = $_POST['anio'];
 $automovil->color = $_POST['color'];
+$automovil->motor = $_POST['motor'];
+$automovil->chasis = $_POST['chasis'];
 $automovil->tipo_vehiculo = $_POST['tipo_vehiculo'];
 
 
