@@ -27,7 +27,7 @@ if (!isset($autos)) {
         <table class="w-full">
             <thead class="bg-[#6A62D2] text-white">
                 <tr>
-                    <th class="rounded-tl-lg">ID</th>
+                    <th class="rounded-tl-lg">Placa</th>
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Año</th>
@@ -38,7 +38,7 @@ if (!isset($autos)) {
                 <?php if (!empty($autos)): ?>
                     <?php foreach ($autos as $auto): ?>
                         <tr>
-                            <td class="border border-[#6A62D2]"><?php echo htmlspecialchars($auto['id']); ?></td>
+                            <td class="border border-[#6A62D2]"><?php echo htmlspecialchars($auto['placa']); ?></td>
                             <td class="border border-r border-[#6A62D2]"><?php echo htmlspecialchars($auto['marca']); ?></td>
                             <td class="border border-r border-[#6A62D2]"><?php echo htmlspecialchars($auto['modelo']); ?></td>
                             <td class="border border-r border-[#6A62D2]"><?php echo htmlspecialchars($auto['anio']); ?></td>
